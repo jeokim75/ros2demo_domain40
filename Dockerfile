@@ -1,3 +1,4 @@
+FROM ros:dashing-ros-base-bionic
 #RUN rm -rf /var/lib/apt/lists/*
 
 # Install Cartographer dependencies
