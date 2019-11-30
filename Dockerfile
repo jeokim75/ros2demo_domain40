@@ -38,14 +38,14 @@ RUN /bin/bash -c "source /opt/ros/dashing/setup.bash ;\
                   colcon build --symlink-install"
 
 # Download demo example
-RUN /bin/bash -c "git clone https://github.com/pomelee/ros2demo.git ;\
-                  cp ros2demo/src/run_teleoperation.sh . ;\
+RUN /bin/bash -c "rm -f ros2demo_domain40/src/teleop_keyboard.py; \
+                  git clone https://github.com/jeokim75/ros2demo_domain40.git;\
+                  cp ros2demo_domain40/src/run_teleoperation.sh . ;\
                   chmod +x teleop_keyboard.py ;\
-                  cp ros2demo/src/entrypoint.sh . ;\
+                  cp ros2demo_domain40/src/entrypoint.sh . ;\
                   chmod +x entrypoint.sh ;\
-                  cp ros2demo/src/teleop_keyboard.py /turtlebot3_ws/src/turtlebot3/turtlebot3/turtlebot3_teleop/turtlebot3_teleop/script/ ;\
+                  cp ros2demo_domain40/src/teleop_keyboard.py /turtlebot3_ws/src/turtlebot3/turtlebot3/turtlebot3_teleop/turtlebot3_teleop/script/ ;\
                   chmod +x run_teleoperation.sh"
-
 
 # setup entrypoint
 ENTRYPOINT ["/entrypoint.sh"]
